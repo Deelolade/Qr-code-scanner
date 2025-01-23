@@ -51,7 +51,7 @@ const QrScanner = () => {
         }
     }
     return (
-        <div>
+        <div className='mx-auto bg-red-400 w-screen text-center'>
             <h2>QrCode Scanner</h2>
             <input
                 type="file"

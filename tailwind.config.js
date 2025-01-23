@@ -4,7 +4,13 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
-  theme: {},
+  theme: {
+    extend:{
+      fontFamily:{
+        Playwrite: ['"Playwrite IN"', "sans-serif"]
+      }
+    }
+  },
   plugins: [
     require('daisyui'),
   ],
