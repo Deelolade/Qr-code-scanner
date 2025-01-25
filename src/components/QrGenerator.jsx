@@ -27,12 +27,14 @@ const QrGenerator = () => {
   }, []);
 
   return (
-    <div className="">
-      <div className='mx-auto lg:h-[60vh] text-center flex justify-center items-center'>
-        <div className="">
-          {inputText && (<QRCodeCanvas value={inputText} ref={qrCodeRef} size={300} className=' border-8 border-white rounded-lg shadow-lg mx-auto' />)}
-          <div className="mt-">
-            <h2 className='text-5xl font-bold my-12 '>Qr code generator</h2>
+    <div className="h-[90vh] ">
+      <div className='mx-auto text-center flex justify-center items-center flex-col'>
+        <div className="mt-20">
+          <div className="h-[29vh]">
+            {inputText && (<QRCodeCanvas value={inputText} ref={qrCodeRef} size={300} className=' border-8 border-white rounded-lg shadow-lg mx-auto' />)}
+          </div>
+          <div className="">
+            <h2 className='text-6xl font-bold my-12 '>Qr code generator</h2>
             <input
               type="text"
               placeholder="Enter text to generate QR code"
@@ -40,7 +42,7 @@ const QrGenerator = () => {
               onChange={(e) => {
                 setInputText(e.target.value);
               }}
-              className="w-[30vw] h-16 outline-none px-6 font-medium rounded-full shadow-lg bg-white/30 backdrop-blur-md border border-white/40 text-black placeholder-white"
+              className="w-[30vw] h-16 outline-none px-6 font-medium rounded-full shadow-lg bg-white/30 backdrop-blur-md border border-white/40 text-black placeholder-black"
             />
           </div>
           {inputText && (
@@ -51,11 +53,9 @@ const QrGenerator = () => {
               Download QR Code
             </button>
           )}
-
         </div>
-
       </div>
-      <div className="absolute bottom-0 w-full -z-10">
+      <div className=" bottom-0 absolute w-full -z-10">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000b76" fill-opacity="1" d="M0,32L30,64C60,96,120,160,180,176C240,192,300,160,360,122.7C420,85,480,43,540,26.7C600,11,660,21,720,37.3C780,53,840,75,900,101.3C960,128,1020,160,1080,160C1140,160,1200,128,1260,101.3C1320,75,1380,53,1410,42.7L1440,32L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path></svg>
       </div>
     </div>

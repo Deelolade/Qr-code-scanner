@@ -7,7 +7,7 @@ import Navbar from './components/Navbar'
 
 const App = () => {
   return (
-    <div className="">
+    <div className="max-h-screen">
       <Navbar />
       <Routes>
         <Route path="/" element={<QrGenerator />} />
