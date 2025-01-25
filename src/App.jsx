@@ -9,10 +9,15 @@ const App = () => {
   return (
     <div className="max-h-screen">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<QrGenerator />} />
-        <Route path="/scanner" element={<QrScanner />} />
-      </Routes>
+      
+      <QrGenerator />
+      <h1 className="text-gray-900 dark:text-gray-100">
+  Welcome to Dark Mode!
+</h1>
+<p className="bg-gray-100 dark:bg-gray-800 p-4 rounded-md">
+  Tailwind makes dark mode super easy!
+</p>
+      <QrScanner />
     </div>
   )
 }
