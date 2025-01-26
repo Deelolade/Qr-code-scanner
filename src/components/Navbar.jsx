@@ -8,12 +8,12 @@ const Navbar = () => {
             <div className="flex-1">
                 <Link to="/" className="btn btn-ghost text-xl font-Playwrite text-light-secondary dark:text-dark-secondary">QRCode</Link>
             </div>
-            <div className="flex-none">
-                <ul className="menu menu-horizontal px-1">
-                    <li><a href="#qr-generator" className='text-dark-primary dark:text-light-primary font-semibold'>Generator</a></li>
-                    <li><a href="#qr-scanner" className='text-dark-primary dark:text-light-primary font-semibold'>Scanner</a></li>
-                    <ThemeToggle />
+            <div className="flex-none ">
+                <ul className="menu menu-horizontal px-1 pr-4">
+                    <li><a href="#qr-generator" className='text-lg text-dark-primary dark:text-light-primary font-semibold'>Generator</a></li>
+                    <li><a href="#qr-scanner" className='text-lg text-dark-primary dark:text-light-primary font-semibold'>Scanner</a></li>
                 </ul>
+                <ThemeToggle />
             </div>
         </div>
     )

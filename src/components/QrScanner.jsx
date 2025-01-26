@@ -50,18 +50,37 @@ const QrScanner = () => {
                 });
         }
     }
+    const deleteData = () => {
+        setScanResult('')
+        if (scanResult === "") {
+            "qr-reader" === 0
+        }
+    }
     return (
-        <div className="h-screen w-screen flex justify-center items-center" id='qr-scanner'>
+        <div className="h-screen w-screen flex justify-center items-center bg-light-secondary dark:bg-dark-primary" id='qr-scanner'>
             <div className=''>
-                <div className="">
-                    <h2>QrCode Scanner</h2>
-                    <input
-                        type="file"
-                        accept='image/*'
-                        onChange={handleFileChange}
-                        ref={scannerRef} />
-                    <div id="qr-reader" style={{ width: "300px", margin: "auto" }}></div>
-                    <p>Scan Result : {scanResult || "No QrCode Detected"}</p>
+                <div className="text-center mx-auto">
+                    <h2 className='text-6xl font-bold my-12 text-light-primary dark:text-dark-secondary'>QrCode Scanner</h2>
+                    {scanResult.length < 1 && (
+                        <input
+                            type="file"
+                            accept='image/*'
+                            onChange={handleFileChange}
+                            ref={scannerRef}
+                            className='w-[60vw] md:w-[50vw] lg:w-[30vw] my-4 pt-3 h-14  py-auto outline-none px-6 font-medium rounded-full shadow-lg bg-white/30 backdrop-blur-md border border-white/40 text-light-primary placeholder:text-light-secondary dark:text-white dark:placeholder-white ' />
+                    )}
+                    <div id="qr-reader" className='max-w-[30vw] h-[40vh] mx-auto' />
+                    {/* {scanResult && (
+                    )} */}
+                    <p className='text-2xl font-bold my-12 text-light-primary dark:text-dark-secondary'>Scan Result : {scanResult || "No QrCode Detected"}</p>
+                    {scanResult && (
+                        <button
+                            onClick={deleteData}
+                            className="mt-4 px-4 py-2 bg-light-primary dark:bg-dark-primary dark:border-2 dark:text-dark-secondary text-light-secondary font-bold rounded-lg shadow hover:scale-105  transition"
+                        >
+                            Delete Data
+                        </button>
+                    )}
                 </div>
             </div>
         </div>
