@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
-// import QRCode from "qrcode.react"
 import { QRCodeCanvas } from "qrcode.react";
 
 const QrGenerator = () => {
   const [inputText, setInputText] = useState("")
-  const qrCodeRef = useRef(null);
+  const canvasRef = useRef(null);
 
   const downloadQRCode = () => {
-    if (qrCodeRef.current) {
-      const canvas = qrCodeRef.current.querySelector("canvas"); // Get the canvas inside the QRCodeCanvas
+    if (canvasRef.current) {
+      const canvas = canvasRef.current.querySelector("canvas"); // Get the canvas inside the QRCodeCanvas
       if (canvas) {
         const url = canvas.toDataURL("image/png"); // Convert canvas to a PNG URL
         const link = document.createElement("a");
@@ -22,21 +21,38 @@ const QrGenerator = () => {
       console.error("QR Code container is not rendered yet!");
     }
   };
+  // useEffect(() => {
+  //   console.log(canvasRef.current?.innerHTML); // Log the structure
+  // }, [inputText]);
   useEffect(() => {
-    console.log(qrCodeRef.current?.innerHTML); // Log the structure
-  }, []);
+    // Debugging: Check if the canvas element is rendered
+    if (canvasRef.current) {
+      const canvas = canvasRef.current.querySelector("canvas");
+      if (canvas) {
+        console.log("Canvas element found:", canvas);
+        console.log("Canvas content as data URL:", canvas.toDataURL());
+      } else {
+        console.log("Canvas element not found yet.");
+      }
+    }
+  }, [inputText]);
 
-  const deleteData =()=>{
+  const deleteData = () => {
     setInputText('')
   }
   return (
     <div className="  xs:h-auto sm:h-screen w-screen  bg-light-secondary dark:bg-dark-primary" id="qr-generator">
       <div className='mx-auto text-center flex justify-center items-center h-screen'>
         <div className="">
-          <div className="">
-            {inputText && (<QRCodeCanvas value={inputText} ref={qrCodeRef} size={300} className=' max-w-[70vw]  h-[30vh] md:h-[40vh] border-8 border-white rounded-lg shadow-lg mx-auto' />)}
+          <div className=""  ref={canvasRef}>
+            {inputText && (<QRCodeCanvas
+              value={inputText}
+              size={300}
+              className=' max-w-[70vw]  h-[30vh] md:h-[40vh] border-8 border-white rounded-lg shadow-lg mx-auto'
+            />
+            )}
           </div>
-          <div className=" ">
+          <div className="">
             <h2 className='text-4xl md:text-5xl lg:text-6xl font-bold my-12 text-light-primary dark:text-dark-secondary'>QrCode generator</h2>
             <input
               type="text"
@@ -49,22 +65,22 @@ const QrGenerator = () => {
             />
           </div>
           <div className="xs:w-[80vw] lg:w-[20vw] mx-auto flex justify-evenly mt-6">
-          {inputText && (
-            <button
-              onClick={downloadQRCode}
-              className="mt-4 px-4 py-2 xs:text-sm sm:text-[15px]  bg-light-primary dark:bg-dark-primary dark:border-2 dark:text-dark-secondary text-light-secondary font-bold rounded-lg shadow hover:scale-105  transition"
-            >
-              Download QR Code
-            </button>
-          )}
-          {inputText && (
-            <button
-              onClick={deleteData}
-              className="mt-4 px-4 py-2 xs:text-sm sm:text-[15px] bg-light-primary dark:bg-dark-primary dark:border-2 dark:text-dark-secondary text-light-secondary font-bold rounded-lg shadow hover:scale-105  transition"
-            >
-              Delete Data
-            </button>
-          )}
+            {inputText && (
+              <button
+                onClick={downloadQRCode}
+                className="mt-4 px-4 py-2 xs:text-sm sm:text-[15px]  bg-light-primary dark:bg-dark-primary dark:border-2 dark:text-dark-secondary text-light-secondary font-bold rounded-lg shadow hover:scale-105  transition"
+              >
+                Download QR Code
+              </button>
+            )}
+            {inputText && (
+              <button
+                onClick={deleteData}
+                className="mt-4 px-4 py-2 xs:text-sm sm:text-[15px] bg-light-primary dark:bg-dark-primary dark:border-2 dark:text-dark-secondary text-light-secondary font-bold rounded-lg shadow hover:scale-105  transition"
+              >
+                Delete Data
+              </button>
+            )}
           </div>
         </div>
       </div>
