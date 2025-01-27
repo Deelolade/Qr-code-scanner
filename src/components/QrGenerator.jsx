@@ -30,14 +30,14 @@ const QrGenerator = () => {
     setInputText('')
   }
   return (
-    <div className="h-auto w-screen bg-light-secondary dark:bg-dark-primary" id="qr-generator">
+    <div className="  xs:h-auto sm:h-screen w-screen  bg-light-secondary dark:bg-dark-primary" id="qr-generator">
       <div className='mx-auto text-center flex justify-center items-center h-screen'>
         <div className="">
           <div className="">
-            {inputText && (<QRCodeCanvas value={inputText} ref={qrCodeRef} size={300} className=' border-8 border-white rounded-lg shadow-lg mx-auto' />)}
+            {inputText && (<QRCodeCanvas value={inputText} ref={qrCodeRef} size={300} className=' max-w-[70vw]  h-[30vh] md:h-[40vh] border-8 border-white rounded-lg shadow-lg mx-auto' />)}
           </div>
           <div className=" ">
-            <h2 className='text-6xl font-bold my-12 text-light-primary dark:text-dark-secondary'>QrCode generator</h2>
+            <h2 className='text-4xl md:text-5xl lg:text-6xl font-bold my-12 text-light-primary dark:text-dark-secondary'>QrCode generator</h2>
             <input
               type="text"
               placeholder="Enter text to generate QR code"
@@ -45,14 +45,14 @@ const QrGenerator = () => {
               onChange={(e) => {
                 setInputText(e.target.value);
               }}
-              className="w-[60vw] md:w-[50vw] lg:w-[30vw] h-16 outline-none px-6 font-medium rounded-full shadow-lg bg-white/30 backdrop-blur-md border border-white/40 text-light-primary placeholder:text-light-secondary dark:text-white dark:placeholder-white"
+              className="w-[90vw] md:w-[55vw] lg:w-[35vw] h-16 outline-none px-6 font-medium rounded-full shadow-lg bg-white/30 backdrop-blur-md border border-white/40 text-light-primary placeholder:text-light-secondary dark:text-white dark:placeholder-white"
             />
           </div>
-          <div className="w-[20vw] mx-auto flex justify-evenly mt-6">
+          <div className="xs:w-[80vw] lg:w-[20vw] mx-auto flex justify-evenly mt-6">
           {inputText && (
             <button
               onClick={downloadQRCode}
-              className="mt-4 px-4 py-2 bg-light-primary dark:bg-dark-primary dark:border-2 dark:text-dark-secondary text-light-secondary font-bold rounded-lg shadow hover:scale-105  transition"
+              className="mt-4 px-4 py-2 xs:text-sm sm:text-[15px]  bg-light-primary dark:bg-dark-primary dark:border-2 dark:text-dark-secondary text-light-secondary font-bold rounded-lg shadow hover:scale-105  transition"
             >
               Download QR Code
             </button>
@@ -60,7 +60,7 @@ const QrGenerator = () => {
           {inputText && (
             <button
               onClick={deleteData}
-              className="mt-4 px-4 py-2 bg-light-primary dark:bg-dark-primary dark:border-2 dark:text-dark-secondary text-light-secondary font-bold rounded-lg shadow hover:scale-105  transition"
+              className="mt-4 px-4 py-2 xs:text-sm sm:text-[15px] bg-light-primary dark:bg-dark-primary dark:border-2 dark:text-dark-secondary text-light-secondary font-bold rounded-lg shadow hover:scale-105  transition"
             >
               Delete Data
             </button>

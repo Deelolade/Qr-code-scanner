@@ -60,19 +60,21 @@ const QrScanner = () => {
         <div className="h-screen w-screen flex justify-center items-center bg-light-secondary dark:bg-dark-primary" id='qr-scanner'>
             <div className=''>
                 <div className="text-center mx-auto">
-                    <h2 className='text-6xl font-bold my-12 text-light-primary dark:text-dark-secondary'>QrCode Scanner</h2>
+                    <h2 className='text-4xl md:text-5xl lg:text-6xl font-bold my-12 text-light-primary dark:text-dark-secondary'>QrCode Scanner</h2>
                     {scanResult.length < 1 && (
                         <input
                             type="file"
                             accept='image/*'
                             onChange={handleFileChange}
                             ref={scannerRef}
-                            className='w-[60vw] md:w-[50vw] lg:w-[30vw] my-4 pt-3 h-14  py-auto outline-none px-6 font-medium rounded-full shadow-lg bg-white/30 backdrop-blur-md border border-white/40 text-light-primary placeholder:text-light-secondary dark:text-white dark:placeholder-white ' />
+                            className='w-[90vw] md:w-[50vw] lg:w-[30vw] my-4 pt-3 h-14  py-auto outline-none px-6 font-medium rounded-full shadow-lg bg-white/30 backdrop-blur-md border border-white/40 text-light-primary placeholder:text-light-secondary dark:text-white dark:placeholder-white ' />
                     )}
-                    <div id="qr-reader" className='max-w-[30vw] h-[40vh] mx-auto' />
-                    {/* {scanResult && (
-                    )} */}
-                    <p className='text-2xl font-bold my-12 text-light-primary dark:text-dark-secondary'>Scan Result : {scanResult || "No QrCode Detected"}</p>
+                    <div id="qr-reader" className='max-w-[30vw]  h-[30vh] md:h-[40vh] mx-auto' />
+                    {scanResult && (
+                        <p className=' xs:text-lg md:text-2xl  font-bold my-12 text-light-primary dark:text-dark-secondary'>Scan Result : <br />
+                            <span className='hover:italic hover:underline'>{scanResult || "No QrCode Detected"}</span>
+                        </p>
+                    )}
                     {scanResult && (
                         <button
                             onClick={deleteData}
